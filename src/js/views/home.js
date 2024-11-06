@@ -13,37 +13,39 @@ export const Home = () => {
 	useEffect(() => {
 		actions.obtenerPersonajes()
 		actions.obtenerPlanetas()
-	}
-		, [])
-	return <div className="text-center mt-5">
-		<h1>Star Wars API Beli</h1>
-		<h1 className="mt-4">characters</h1>
-		<div className="d-flex flex-row overflow-scroll">
-			{
-				store.people.map((item, index) => {
+		actions.obtenerVehiculos()
+	}, [])
+
+	return (
+		<div className="text-center mt-5">
+			<h1>Star Wars API Beli</h1>
+			<h1 className="mt-4 mb-2">characters</h1>
+			<div className="d-flex flex-row overflow-scroll">
+				{store.people.map((item, index) => {
 					return (
 						<Card key={index} name={item.name} uid={item.uid} />
 					)
 				})
-			}
-		</div>
-		<div className="d-flex flex-row overflow-scroll">
-			{
-				store.planets.map((item, index) => {
+				}
+			</div>
+			<h1 className="mt-4 mb-2">planets</h1>
+			<div className="d-flex flex-row overflow-scroll">
+				{store.planets.map((item, index) => {
 					return (
 						<CardPlanets key={index} name={item.name} uid={item.uid} /> //agregue el componente//
 					)
 				})
-			}
-		</div>
-		<div className="d-flex flex-row overflow-scroll">
-			{
-				store.vehicles.map((item, index) => {
+				}
+			</div>
+			<h1 className="mt-4 mb-2">vehicles</h1>
+			<div className="d-flex flex-row overflow-scroll">
+				{store.vehicles.map((item, index) => {
 					return (
 						<CardVehicles key={index} name={item.name} uid={item.uid} /> //agregue el componente//
 					)
 				})
-			}
+				}
+			</div>
 		</div>
-	</div>
+	)
 };

@@ -6,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			people: [],
 			planets: [], //indicamos el nombre del store y con corchetes le indicamos que es un array vacio//
 			vehicles: [],
+			person: {},
 		},
 		actions: {
 
@@ -14,7 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const response = await fetch("https://www.swapi.tech/api/people")
 					const data = await response.json() //Transforma la info que llega del fetch en un objeto json//
-					setStore({ people: data.results }) //para que guarde en store para verlo de todos los archivos//
+					// setStore({ people: data.results }) //para que guarde en store para verlo de todos los archivos//
 				} catch (error) {
 					console.log(error)
 					return false
@@ -41,6 +42,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			obtenerInfoPersonaje: async (id) => {
+				try {
+					const response = await fetch("https://www.swapi.tech/api/people/"+id)
+					const data = await response.json() //Transforma la info que llega del fetch en un objeto json//
+					 setStore({ person: data.result }) //para que guarde en store para verlo de todos los archivos//
+				console.log (data.result)
+				} catch (error) {
+					console.log(error)
+					return false
+				}
+			},
 		}
 	};
 };
