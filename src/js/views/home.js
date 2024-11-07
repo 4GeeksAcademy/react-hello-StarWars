@@ -44,6 +44,7 @@ export const Home = () => {
 						<CardVehicles key={index} name={item.name} uid={item.uid} /> //agregue el componente//
 					)
 				})
+
 				}
 			</div>
 		</div>
